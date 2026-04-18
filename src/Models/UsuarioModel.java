@@ -6,15 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author desenv06
- */
 public class UsuarioModel {
     public static void create(UsuarioBean u, Connection con) throws SQLException {
         PreparedStatement st;

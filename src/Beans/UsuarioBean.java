@@ -1,7 +1,3 @@
-/**
- *
- * @author desenv06
- */
 public class UsuarioBean {
     private int id;
     private String nome;

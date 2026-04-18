@@ -9,20 +9,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author desenv06
- */
 public class PublicacaoController {
         Scanner input = new Scanner(System.in);
     public void createPublicacao(Connection con) throws SQLException, ParseException {
         
-        @SuppressWarnings("unchecked")
         HashSet<UsuarioBean> allUsers = (HashSet<UsuarioBean>) UsuarioModel.listAll(con);
         Iterator<UsuarioBean> itUsers = allUsers.iterator();
         HashSet<PublicacaoBean> allPubs;

@@ -1,7 +1,3 @@
-/**
- *
- * @author desenv06
- */
 public class RegiaoBean {
     private int id;
     private String cidade;

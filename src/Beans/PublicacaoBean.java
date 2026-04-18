@@ -1,10 +1,6 @@
 
 import java.util.Date;
 
-/**
- *
- * @author desenv06
- */
 public class PublicacaoBean {
     private int id;
     private int id_autor;
