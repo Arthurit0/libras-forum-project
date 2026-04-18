@@ -10,7 +10,7 @@ INSERT INTO regiao (cidade, estado) VALUES (NULL, 'Santa Catarina');
 INSERT INTO regiao (cidade, estado) VALUES (NULL, 'Paraná');
 INSERT INTO regiao (cidade, estado) VALUES ('Joinville', 'Santa Catarina');
 INSERT INTO regiao (cidade, estado) VALUES (NULL, 'São Paulo');
-INSERT INTO regiao (cidade, estado) VALUES ('Curitiba', 'Paraná')
+INSERT INTO regiao (cidade, estado) VALUES ('Curitiba', 'Paraná');
 
 CREATE TABLE usuario(
 	id serial,

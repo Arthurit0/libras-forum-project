@@ -32,9 +32,9 @@ public class UsuarioModel {
             st.close();  
     }
 
-    static HashSet listAll(Connection con) throws SQLException {
+    static HashSet<UsuarioBean> listAll(Connection con) throws SQLException {
         Statement st;
-        HashSet list = new HashSet();
+        HashSet<UsuarioBean> list = new HashSet<>();
             st = con.createStatement();
             String sql = "SELECT id, nome, email, id_regiao, avaliacao, instituicao, profissao, senha, cont_denuncias, is_adm FROM usuario ORDER BY id";
             ResultSet res = st.executeQuery(sql);

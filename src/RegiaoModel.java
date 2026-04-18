@@ -15,9 +15,9 @@ import java.util.HashSet;
  * @author desenv06
  */
 public class RegiaoModel {
-    static HashSet listAll(Connection con) throws SQLException {
+    static HashSet<RegiaoBean> listAll(Connection con) throws SQLException {
         Statement st;
-        HashSet list = new HashSet();
+        HashSet<RegiaoBean> list = new HashSet<>();
             st = con.createStatement();
             String sql = "SELECT id, cidade, estado FROM regiao ORDER BY id";
             ResultSet result = st.executeQuery(sql);

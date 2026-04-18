@@ -61,11 +61,11 @@ public class PublicacaoModel {
             st.close();  
     }
 
-    static HashSet listAll(Connection con) throws SQLException {
+    static HashSet<PublicacaoBean> listAll(Connection con) throws SQLException {
         Statement st;
-        HashSet list = new HashSet();
+        HashSet<PublicacaoBean> list = new HashSet<>();
             st = con.createStatement();
-            String sql = "SELECT id, id_autor, texto, likes, deslikes, data_publicacao, removido, tipo_pub, id_regiao, id_pub, id_mencao, arquivo FROM publicacao";
+            String sql = "SELECT id, id_autor, texto, likes, deslikes, data_publicacao, removido, tipo_pub, id_regiao, id_pub, id_mencao, arquivo FROM publicacao ORDER BY id";
             ResultSet res = st.executeQuery(sql);
             while(res.next()) {
                 list.add(new PublicacaoBean(res.getInt(1), res.getInt(2), res.getString(3), res.getInt(4), res.getInt(5), new java.util.Date(res.getDate(6).getTime()), res.getBoolean(7), res.getString(8), res.getInt(9), res.getInt(10), res.getInt(11), res.getString(12)));
@@ -73,11 +73,11 @@ public class PublicacaoModel {
         return list;
     }
     
-    static HashSet listAllPerguntas(Connection con) throws SQLException {
+    static HashSet<PublicacaoBean> listAllPerguntas(Connection con) throws SQLException {
         Statement st;
-        HashSet list = new HashSet();
+        HashSet<PublicacaoBean> list = new HashSet<>();
             st = con.createStatement();
-            String sql = "SELECT id, id_autor, texto, likes, deslikes, data_publicacao, removido, tipo_pub, id_regiao, id_pub, id_mencao, arquivo FROM publicacao WHERE tipo_pub = 'P'";
+            String sql = "SELECT id, id_autor, texto, likes, deslikes, data_publicacao, removido, tipo_pub, id_regiao, id_pub, id_mencao, arquivo FROM publicacao WHERE tipo_pub = 'P' ORDER BY id";
             ResultSet res = st.executeQuery(sql);
             while(res.next()) {
                 list.add(new PublicacaoBean(res.getInt(1), res.getInt(2), res.getString(3), res.getInt(4), res.getInt(5), new java.util.Date(res.getDate(6).getTime()), res.getBoolean(7), res.getString(8), res.getInt(9), res.getInt(10), res.getInt(11), res.getString(12)));
@@ -85,11 +85,11 @@ public class PublicacaoModel {
         return list;
     }
     
-    static HashSet listPublicacoesEAutores(Connection con) throws SQLException {
+    static HashSet<PublicacaoBean> listPublicacoesEAutores(Connection con) throws SQLException {
         Statement st;
-        HashSet list = new HashSet();
+        HashSet<PublicacaoBean> list = new HashSet<>();
             st = con.createStatement();
-            String sql = "SELECT u.id, nome, email, u.id_regiao, avaliacao, cont_denuncias, is_adm, p.id, texto, likes, deslikes, data_publicacao, removido, tipo_pub, p.id_regiao, id_pub, id_mencao, arquivo FROM usuario u JOIN publicacao p ON u.id = p.id_autor";
+            String sql = "SELECT u.id, nome, email, u.id_regiao, avaliacao, cont_denuncias, is_adm, p.id, texto, likes, deslikes, data_publicacao, removido, tipo_pub, p.id_regiao, id_pub, id_mencao, arquivo FROM usuario u JOIN publicacao p ON u.id = p.id_autor ORDER BY p.id";
             ResultSet res = st.executeQuery(sql);
             while(res.next()) {
                 UsuarioBean user = new UsuarioBean(res.getInt(1), res.getString(2), res.getString(3), res.getInt(4), res.getFloat(5), res.getInt(6), res.getBoolean(7));
@@ -100,11 +100,11 @@ public class PublicacaoModel {
         return list;
     }
     
-    static HashSet listMaxPublicacaoRegiao(int id_usuario, Connection con) throws SQLException{
+    static HashSet<PublicacaoBean> listMaxPublicacaoRegiao(int id_usuario, Connection con) throws SQLException{
         Statement st;
-        HashSet list = new HashSet();
+        HashSet<PublicacaoBean> list = new HashSet<>();
             st = con.createStatement();
-            String sql = "SELECT u.id, nome, email, u.id_regiao, avaliacao, cont_denuncias, is_adm, p.id, texto, likes, deslikes, data_publicacao, removido, tipo_pub, p.id_regiao, id_pub, id_mencao, arquivo FROM usuario u JOIN publicacao p ON p.id_autor = u.id AND u.id <> "+ id_usuario +" WHERE p.id_regiao = (SELECT id_regiao FROM usuario WHERE id = "+ id_usuario +") AND likes = (SELECT max(likes) FROM publicacao p JOIN usuario u ON p.id_autor = u.id AND u.id <> "+ id_usuario +");";
+            String sql = "SELECT u.id, nome, email, u.id_regiao, avaliacao, cont_denuncias, is_adm, p.id, texto, likes, deslikes, data_publicacao, removido, tipo_pub, p.id_regiao, id_pub, id_mencao, arquivo FROM usuario u JOIN publicacao p ON p.id_autor = u.id AND u.id <> "+ id_usuario +" WHERE p.id_regiao = (SELECT id_regiao FROM usuario WHERE id = "+ id_usuario +") AND likes = (SELECT max(likes) FROM publicacao p JOIN usuario u ON p.id_autor = u.id AND u.id <> "+ id_usuario +") ORDER BY p.id;";
             ResultSet res = st.executeQuery(sql);
             while(res.next()) {
                 UsuarioBean user = new UsuarioBean(res.getInt(1), res.getString(2), res.getString(3), res.getInt(4), res.getFloat(5), res.getInt(6), res.getBoolean(7));

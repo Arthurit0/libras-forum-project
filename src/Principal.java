@@ -4,10 +4,7 @@
  * and open the template in the editor.
  */
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.ParseException;
 import java.util.Scanner;
 
@@ -70,6 +67,6 @@ public class Principal {
         System.out.println("Digite qualquer outro valor para sair");
         System.out.print("Sua opção: ");
         Scanner input = new Scanner(System.in);
-            return input.nextInt();
+        return input.nextInt();
     }
 }

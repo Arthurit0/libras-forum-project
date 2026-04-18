@@ -22,9 +22,10 @@ public class PublicacaoController {
         Scanner input = new Scanner(System.in);
     public void createPublicacao(Connection con) throws SQLException, ParseException {
         
-        HashSet allUsers = UsuarioModel.listAll(con);
+        @SuppressWarnings("unchecked")
+        HashSet<UsuarioBean> allUsers = (HashSet<UsuarioBean>) UsuarioModel.listAll(con);
         Iterator<UsuarioBean> itUsers = allUsers.iterator();
-        HashSet allPubs;
+        HashSet<PublicacaoBean> allPubs;
         Iterator<PublicacaoBean> itPubs;
         
         if(!allUsers.isEmpty()){
@@ -68,7 +69,8 @@ public class PublicacaoController {
                 switch(tipoPub){
                     case "P":
                         System.out.println("\nLista de regiões no sistema:\n");
-                        HashSet allRegions = RegiaoModel.listAll(con);
+                        @SuppressWarnings("unchecked")
+                        HashSet<RegiaoBean> allRegions = (HashSet<RegiaoBean>) RegiaoModel.listAll(con);
                         
                         Iterator<RegiaoBean> itRegions = allRegions.iterator();
                         
@@ -139,7 +141,9 @@ public class PublicacaoController {
                                 
                                 }while(id_pub < 1 || id_pub > allPubs.size());
                                 
-                                    allUsers = UsuarioModel.listAll(con);
+                                    @SuppressWarnings("unchecked")
+                                    HashSet<UsuarioBean> allUsersTemp = (HashSet<UsuarioBean>) UsuarioModel.listAll(con);
+                                    allUsers = allUsersTemp;
                                     itUsers = allUsers.iterator();
 
                                 System.out.println("\nLista de usuários no sistema:\n");
@@ -187,7 +191,7 @@ public class PublicacaoController {
     }
     
     void listPublicacoes(Connection con) throws SQLException{
-        HashSet allPubs = PublicacaoModel.listAll(con);
+        HashSet<PublicacaoBean> allPubs = PublicacaoModel.listAll(con);
         Iterator<PublicacaoBean> itPubs = allPubs.iterator();
         if(!allPubs.isEmpty()){
             System.out.println("\nLista de publicações no sistema:\n");
@@ -200,7 +204,7 @@ public class PublicacaoController {
     }
     
     void listPublicacoesEUsuarios(Connection con) throws SQLException{
-        HashSet allPubsNUsers = PublicacaoModel.listPublicacoesEAutores(con);
+        HashSet<PublicacaoBean> allPubsNUsers = PublicacaoModel.listPublicacoesEAutores(con);
         Iterator<PublicacaoBean> itPubsNUsers = allPubsNUsers.iterator();
         if(!allPubsNUsers.isEmpty()){
             System.out.println("\nLista de publicações com seus usuários no sistema:\n");
@@ -213,7 +217,8 @@ public class PublicacaoController {
     }
     
     void listPubsSameRegionAsUser(Connection con) throws SQLException{
-        HashSet<UsuarioBean> allUsers = UsuarioModel.listAll(con);
+        @SuppressWarnings("unchecked")
+        HashSet<UsuarioBean> allUsers = (HashSet<UsuarioBean>) UsuarioModel.listAll(con);
         Iterator<UsuarioBean> itUsers = allUsers.iterator();
         
      if(!allUsers.isEmpty()){
@@ -226,7 +231,7 @@ public class PublicacaoController {
             int id_usuario = input.nextInt();
             System.out.println();
             
-        HashSet highestPub = PublicacaoModel.listMaxPublicacaoRegiao(id_usuario, con);
+        HashSet<PublicacaoBean> highestPub = (HashSet<PublicacaoBean>) PublicacaoModel.listMaxPublicacaoRegiao(id_usuario, con);
         
         if(!highestPub.isEmpty()){
             Iterator<PublicacaoBean> itHighest = highestPub.iterator();

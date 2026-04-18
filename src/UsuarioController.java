@@ -47,7 +47,7 @@ public class UsuarioController {
         
         System.out.println("\nLista de regiões no sistema:\n");
         
-        HashSet allRegions = RegiaoModel.listAll(con);
+        HashSet<RegiaoBean> allRegions = RegiaoModel.listAll(con);
         
         if(!allRegions.isEmpty()){
             Iterator<RegiaoBean> itRegions = allRegions.iterator();
@@ -79,7 +79,8 @@ public class UsuarioController {
     }
     
     void listUsuarios(Connection con) throws SQLException{
-        HashSet allUsers = UsuarioModel.listAll(con);
+        @SuppressWarnings("unchecked")
+        HashSet<UsuarioBean> allUsers = (HashSet<UsuarioBean>) UsuarioModel.listAll(con);
         Iterator<UsuarioBean> itUsers = allUsers.iterator();
         
         if(!allUsers.isEmpty()){

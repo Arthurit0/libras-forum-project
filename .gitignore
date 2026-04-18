@@ -1,0 +1,36 @@
+cat > .gitignore << 'EOF'
+# Arquivos compilados Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Arquivos de log
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files
+*.nar
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs
+hs_err_pid*
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
