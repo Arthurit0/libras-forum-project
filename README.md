@@ -1,10 +1,12 @@
 # 🤟❓ Libras Forum Project
 
-> **Trabalho Final da Disciplina de Banco de Dados 1**
+> **Trabalho Final** da disciplina de **Banco de Dados 1 (BAN1)**
 
 Aplicação de fórum voltada à comunidade de Libras (Língua Brasileira de Sinais), desenvolvida em **Java** com banco de dados **PostgreSQL**. O sistema permite o cadastro de usuários e a criação de publicações (perguntas, respostas e comentários), simulando um ambiente de fórum regionalizado.
 
 Esse projeto roda diretamente na CLI. Foi desenvolvido principalmente para desenvolver conhecimentos de **Banco de Dados**, **MVC** e **Orientação a Objetos**.
+
+<img width="800" height="598" alt="image" src="https://github.com/user-attachments/assets/b1add1d3-d011-406d-bc1d-3f16abedabd7" />
 
 ## 📋 Funcionalidades
 
